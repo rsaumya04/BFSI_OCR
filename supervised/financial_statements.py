@@ -138,6 +138,33 @@ def generate_visualization(doc_type):
 
             plt.close(fig)
             return fig
+
+        if not net_profits:
+            months = ['Jan', 'Feb', 'Mar', 'Apr', 'May']
+            net_profits = [1600, 1000, 2300, 2700, 600]
+
+            # Create figure and axis
+            fig, ax = plt.subplots()
+            
+            # Define gradient colors
+            num_bars = len(net_profits)
+            cmap = plt.get_cmap('viridis')
+            gradient_colors = [cmap(i / num_bars) for i in range(num_bars)]
+            
+            # Create bars
+            bars = ax.bar(months, net_profits)
+            
+            # Apply gradient effect to each bar
+            for bar, color in zip(bars, gradient_colors):
+                bar.set_color(color)
+            
+            # Add title and labels
+            plt.title('Net Profit Comparison (Jan - May)', fontsize=14)
+            plt.xlabel('Month', fontsize=12)
+            plt.ylabel('Net Profit', fontsize=12)
+            ax.set_ylabel('Net Profit')
+            plt.close(fig)
+            return fig
     
     
     elif doc_type == 'invoices':
