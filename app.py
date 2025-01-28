@@ -101,10 +101,6 @@ st.markdown(
     .stMarkdown h2, .stSubheader {
         color: black !important;
     }
-    /* General text color */
-    body {
-        color: black !important; /* Ensure all text is jet black */
-    }
     </style>
     """,
     unsafe_allow_html=True
