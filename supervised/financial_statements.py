@@ -17,6 +17,8 @@ warnings.filterwarnings("ignore")
 conn = sqlite3.connect('images.db')
 c = conn.cursor()
 
+#for streamlit cloud
+pytesseract.pytesseract.tesseract_cmd= '/user/bin/tesseract'
 # tables for each document type
 directories = ['payslips', 'invoices', 'profit_loss']
 for doc_type in directories:
