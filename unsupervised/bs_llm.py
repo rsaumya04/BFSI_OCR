@@ -20,7 +20,7 @@ import torch.utils.data
 import streamlit as st
 
 #for streamlit cloud
-pytesseract.pytesseract.tesseract_cmd= '/user/bin/tesseract
+pytesseract.pytesseract.tesseract_cmd= '/usr/bin/tesseract'
 
 # MDOEL TRAINING STARTS HERE
 # Define labels
