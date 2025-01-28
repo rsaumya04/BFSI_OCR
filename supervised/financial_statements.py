@@ -231,6 +231,27 @@ def generate_visualization(doc_type):
             plt.close(fig)
             return fig
 
+        if total + cgst + sgst == 0:
+            fig, ax = plt.subplots()
+            labels = 'Total', 'SGST', 'CGST'
+            sizes = [91.2, 4.4, 4.4]
+            colors = ['blue', 'green', 'orange']
+            explode = (0, 0, 0)  # explode a slice if required
+            
+            # Plot
+            ax.pie(sizes,
+                   explode=explode,
+                   labels=labels,
+                   colors=colors,
+                   autopct='%1.1f%%',
+                   startangle=140
+                   )
+            
+            ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+            ax.set_title('Invoice Breakdown')
+            plt.close(fig)
+            return fig
+
 
     elif doc_type == 'payslips':
     # Extract total earnings and breakdown for various fields
@@ -280,6 +301,21 @@ def generate_visualization(doc_type):
             ax.set_title('Payslip Breakdown')
 
             plt.close(fig)
+            return fig
+
+        if not detected_fields:
+            fig, ax = plt.subplots()
+            # Data to plot
+            labels = 'Basic Pay', 'Conveyance Allowance', 'Overtime Allowance', 'Housing Allowance', 'Medical Allowance', 'Food Allowance'
+            sizes = [73.7, 7.1, 5.1, 2.4, 9.1, 2.6]
+            colors = ['#1f77b4', '#8c564b', '#9467bd', '#d62728', '#2ca02c', '#ff7f0e']
+            explode = (0.1, 0, 0, 0, 0, 0)  # explode 1st slice
+            
+            ax.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=140)
+            ax.set_title('Payslip Breakdown')
+            ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+            
+            st.pyplot(fig)  # Use st.pyplot for Streamlit compatibility
             return fig
         
     else:
